@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>As Eras</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+    }
+    #fundo {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+    .albuns {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 15px;
+      width: 90%;
+      height: 90%;
+    }
+    .album {
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s;
+      background: rgba(255, 255, 255, 0.15);
+    }
+    .album img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+    .album:hover {
+      transform: scale(1.1);
+      z-index: 5;
+    }
+    .album:hover img {
+      opacity: 1;
+    }
+    .janela {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .conteudo {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 25px;
+      max-width: 700px;
+      text-align: center;
+      color: #fff;
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+    .fechar {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <img id="fundo" src="Logo Film GIF by Taylor Swift.gif" alt="Fundo">
+
+  <div class="albuns">
+    <div class="album" data-texto="Debut (2006) - O início da carreira de Taylor Swift, trazendo uma sonoridade country que apresentou a jovem artista ao mundo.">
+      <img src="taylor1.jpg" alt="Debut">
+    </div>
+    <div class="album" data-texto="Fearless (2008) - O álbum que consolidou Taylor na indústria, com hits como Love Story e You Belong With Me, expandindo seu alcance global.">
+      <img src="taylor2.png" alt="Fearless">
+    </div>
+    <div class="album" data-texto="Speak Now (2010) - Completamente escrito por Taylor, mostra sua habilidade de composição e amadurecimento artístico.">
+      <img src="taylor3.jpg" alt="Speak Now">
+    </div>
+    <div class="album" data-texto="Red (2012) - Mistura de estilos, representando transição para o pop. Famoso por letras sobre relacionamentos intensos e vulneráveis.">
+      <img src="taylor4.jpeg" alt="Red">
+    </div>
+    <div class="album" data-texto="1989 (2014) - A virada definitiva para o pop, com estética dos anos 80 e sucessos como Shake It Off e Blank Space.">
+      <img src="taylor5.png" alt="1989">
+    </div>
+    <div class="album" data-texto="Reputation (2017) - Um álbum marcado pela estética sombria, letras afiadas e crítica à mídia e à percepção pública de Taylor.">
+      <img src="taylor6.jpg" alt="Reputation">
+    </div>
+    <div class="album" data-texto="Lover (2019) - Um contraste ao anterior, trazendo romantismo, cores vibrantes e uma atmosfera otimista.">
+      <img src="taylor7.webp" alt="Lover">
+    </div>
+    <div class="album" data-texto="Folklore (2020) - Lançado na pandemia, surpreendeu com estilo indie/folk, narrativas poéticas e grande aclamação da crítica.">
+      <img src="taylor8.png" alt="Folklore">
+    </div>
+    <div class="album" data-texto="Evermore (2020) - Considerado o 'álbum irmão' de Folklore, mais melancólico e reflexivo, explorando histórias e personagens fictícios.">
+      <img src="taylor9.webp" alt="Evermore">
+    </div>
+    <div class="album" data-texto="Midnights (2022) - Inspirado em noites de insônia, mistura pop e sintetizadores com reflexões íntimas da artista.">
+      <img src="taylor10.png" alt="Midnights">
+    </div>
+    <div class="album" data-texto="The Tortured Poets Department (2024) - Um álbum denso e poético, explorando vulnerabilidade, perda e criatividade.">
+      <img src="taylor11.jpg" alt="TTPD">
+    </div>
+    <div class="album" data-texto="The Life of a Showgirl (2025) - Nova era que celebra o espetáculo, a performance e a dualidade da vida sob os holofotes.">
+      <img src="taylor12.png" alt="Showgirl">
+    </div>
+  </div>
+
+  <div class="janela" id="janela">
+    <span class="fechar" id="fechar">&times;</span>
+    <div class="conteudo" id="texto"></div>
+  </div>
+
+  <script>
+    const albuns = document.querySelectorAll('.album');
+    const janela = document.getElementById('janela');
+    const texto = document.getElementById('texto');
+    const fechar = document.getElementById('fechar');
+
+    albuns.forEach(album => {
+      album.onclick = () => {
+        janela.style.display = 'flex';
+        texto.textContent = album.dataset.texto;
+      };
+    });
+
+    fechar.onclick = () => janela.style.display = 'none';
+  </script>
+</body>
+</html>
